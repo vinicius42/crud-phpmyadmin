@@ -2,13 +2,19 @@
 require_once('dbcontext.php');
 
 function create($pessoa){
+    try{
     $pdo = conn_db();
     $sql = $pdo -> prepare("INSERT INTO pessoas VALUES(null, ?, ?, ?)");
-    $sql -> execute(array_values($pessoa));    
+    $sql -> execute(array_values($pessoa));
+}
+catch(Exception $e){
+    echo "Erro :". $e->getMessage();
+}
 }
 
 
 function delete($id){
+    try{
     if($id){
         $id = (int) $_GET['delete'];
         
@@ -17,8 +23,13 @@ function delete($id){
         echo "Pessoa $id deletada";
     };
 }
+catch(Exception $e){
+    echo "Erro :". $e->getMessage();
+}
+}
 
 function edit($pessoa){
+    try{
     if(isset($pessoa)){
         $pdo = conn_db();
         $pdo -> exec('UPDATE 
@@ -29,3 +40,8 @@ function edit($pessoa){
         echo "Alterado com Sucesso!<br>";
     }
 }
+    catch(Exception $e){
+        echo "Erro :". $e->getMessage();
+    }
+}
+

@@ -1,6 +1,7 @@
 <?php 
     require_once('./functions/crudpessoas.php');
     
+    echo "<a href='?p=formpessoa'><button>Cadastrar pessoa</button></a><br><hr>";
     $pessoas = fetchtable('pessoas');
 
     foreach($pessoas as $key => $pessoa){

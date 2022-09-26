@@ -36,7 +36,7 @@ if (isset($_POST['name'])) {
     }
 }
 ?>
-
+<div>
 <form action="<?= isset($name) ? "./?p=formpessoa&editar=$id" : "" ?>" method="post">
     <input name="id" disabled value="<?= isset($name) ? $id : ""; ?>"><br>
     <label>Nome</label>
@@ -47,3 +47,6 @@ if (isset($_POST['name'])) {
     <input type="text" name="type" value="<?= isset($type) ? $type : ""; ?>"><br>
     <button type="submit" value="save"> Salvar</button>
 </form>
+<hr>
+<a href='?p=pessoas'><button>Listar pessoas</button></a>
+</div>

@@ -1,6 +1,8 @@
 <?php 
     require_once('./functions/crudcars.php');
     
+    echo "<a href='?p=cars'><button>Listar carros</button></a><br><hr>";
+
     $cars = fetchtable('cars');
 
     foreach($cars as $key => $car){

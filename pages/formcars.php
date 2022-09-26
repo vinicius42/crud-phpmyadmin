@@ -35,11 +35,16 @@ if (isset($_POST['carname'])) {
 }
 ?>
 
-<form action="<?= isset($carname) ? "./?p=formcars&editar=$id" : "" ?>" method="post">
-    <input name="id" disabled value="<?= isset($carname) ? $id : ""; ?>"><br>
-    <label>Nome do carro</label>
-    <input type="text" name="carname" value="<?= isset($carname) ? $carname : ""; ?>"><br>
-    <label>Placa</label>
-    <input type="text" name="placa" value="<?= isset($placa) ? $placa : ""; ?>">
-    <button type="submit" value="save">Salvar</button>
-</form>
+
+<div>
+    <form action="<?= isset($carname) ? "./?p=formcars&editar=$id" : "" ?>" method="post">
+        <input name="id" disabled value="<?= isset($carname) ? $id : ""; ?>"><br>
+        <label>Nome do carro</label>
+        <input type="text" name="carname" value="<?= isset($carname) ? $carname : ""; ?>"><br>
+        <label>Placa</label>
+        <input type="text" name="placa" value="<?= isset($placa) ? $placa : ""; ?>">
+        <button type="submit" value="save">Salvar</button>
+    </form>
+    <hr>
+    <a href='?p=cars'><button>Listar carros</button></a>
+</div>
