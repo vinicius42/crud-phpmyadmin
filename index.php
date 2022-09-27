@@ -1,3 +1,7 @@
+<!-- <p>RGM 12932868 Vinicius Junior</p>
+    <p>RGM 12955086 Pedro Henrique</p>
+    <p>RGM 13017179 Lukas Burda</p> -->
+
 <?php require_once('./functions/functions.php'); ?>
 <!DOCTYPE html>
 <html lang="en">

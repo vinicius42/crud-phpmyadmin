@@ -37,7 +37,7 @@ function delete($id)
 function edit($cars)
 {
     try {
-        if (isset($cars)) {
+        if (isset($cars)&& $cars['carname'] != '' && $cars['placa'] != '') {
             $pdo = conn_db();
             $pdo->exec('UPDATE 
             cars SET carname ="' . $_POST['carname'] . '",
@@ -45,6 +45,7 @@ function edit($cars)
             WHERE id="' . $_GET['editar'] . '"');
             echo "Alterado com Sucesso!<br>";
         }
+        throw new Exception ("Preencha os campos");
     } catch (Exception $e) {
         echo "Erro :" . $e->getMessage();
     }

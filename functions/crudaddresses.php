@@ -36,13 +36,16 @@ function delete($id)
 function edit($address)
 {
     try {
-        if (isset($address)) {
+        if (isset($address) && $address['cep'] != '' && $address['number'] != '') {
             $pdo = conn_db();
             $pdo->exec('UPDATE 
         addresses SET cep ="' . $_POST['cep'] . '",
         number="' . $_POST['number'] . '" 
         WHERE id="' . $_GET['editar'] . '"');
             echo "Alterado com Sucesso!<br>";
+        }
+        else{
+            throw new Exception ("Preencha os campos");
         }
     } catch (Exception $e) {
         echo "Erro :" . $e->getMessage();
