@@ -2,8 +2,15 @@
 require_once('./functions/crudpessoas.php');
 
 if (isset($_GET['delete'])) {
-    $id = (int) $_GET['delete'];
-    delete($id);
+    $array = fetchtable('pessoas');
+    foreach ($array as $key) {
+        if ($key['id'] == (int) $_GET['delete']) {
+            $id = $key['id'];
+            $name = $key['name'];
+            $document = $key['document'];
+            $type = $key['type'];
+        }
+    }
 };
 
 

@@ -21,38 +21,47 @@ function create($pessoa)
 }
 
 
-function delete($id)
+function delete($pessoa)
 {
     try {
-        if ($id) {
-            $id = (int) $_GET['delete'];
+        if ($pessoa['id']) {
+            $pessoa['id'] = (int) $_GET['delete'];
+            $teste = $pessoa['id'];
 
             $pdo = conn_db();
-            $pdo->exec("DELETE FROM PESSOAS WHERE ID =$id");
-            echo "Pessoa $id deletada";
+            $pdo->exec("DELETE FROM PESSOAS WHERE ID = $teste");
+            
+            echo "Pessoa ".$teste['nome']. "deletada ";         
         };
     } catch (Exception $e) {
         echo "Erro :" . $e->getMessage();
     }
 }
 
-function edit($pessoa){
+function edit($pessoa)
+{
     try {
-        if (
-            isset($pessoa) && $pessoa['name'] != '' && $pessoa['document'] != ''
-            && $pessoa['type'] != ''
-        ) {
+        if (isset($pessoa)) {
+            if ($pessoa['name'] == '') {
+                throw new Exception("Falta preencher o nome");
+            }
+            if ($pessoa['document'] == '') {
+                throw new Exception("Falta preencher o document");
+            }
+            if ($pessoa['type'] == '') {
+                throw new Exception("Falta preencher o tipo");
+            }
+
             $pdo = conn_db();
             $pdo->exec('UPDATE 
-        pessoas SET name ="' . $_POST['name'] . '",
-        document="' . $_POST['document'] . '",
-        type="' . $_POST['type'] . '" 
-        WHERE id="' . $_GET['editar'] . '"');
+            pessoas SET name ="' . $_POST['name'] . '",
+            document="' . $_POST['document'] . '",
+            type="' . $_POST['type'] . '" 
+            WHERE id="' . $_GET['editar'] . '"');
             echo "Alterado com Sucesso!<br>";
-        } else{
-            throw new Exception("Falta preencher os campos");
         }
     } catch (Exception $e) {
         echo "Erro :" . $e->getMessage();
     }
 }
+?>

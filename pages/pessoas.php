@@ -9,7 +9,7 @@
         echo "<b>Name</b>:".$pessoa["name"]."<br>";
         echo "<b>Document:</b>".$pessoa["document"]."<br>";
         echo "<b>Type:</b>".$pessoa["type"]."<br>";
-        echo '<a href="./?p=formpessoa&delete='.$pessoa["id"].'"> DELETAR </a> ';
+        echo "<a href='./?p=apoio&delete=".$pessoa["id"]."'> DELETAR </a>";
         echo '<a href="./?p=formpessoa&edit='.$pessoa["id"].'"> EDITAR </a>';
         echo "<hr>";
     };
